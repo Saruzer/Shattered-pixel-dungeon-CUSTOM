@@ -1,0 +1,101 @@
+﻿<!-- MainWindow.xaml -->
+<Window x:Class="Shattered_pixel_dungeon_CUSTOM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:Shattered_pixel_dungeon_CUSTOM.MVVM.ViewModels"
+        mc:Ignorable="d"
+        Title="Shattered Pixel Dungeon CUSTOM" Height="400" Width="500"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Icon=".\Images\icon.ico">
+
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
+    
+    <Border CornerRadius="16"
+            Background="LightGray">
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="300"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.ColumnSpan="4" Background="#AC2828"
+                SnapsToDevicePixels="True"
+                MouseDown="Border_MouseDown"
+                CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource AncestorType=Border}}"
+                    Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Border}}"
+                    Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Border}}">
+                <StackPanel Orientation="Horizontal">
+                   
+                     <Image
+                    Width="15"
+                    Height="15"
+                    Margin="6,4.4,2,0"
+                    Source=".\Images\icon.ico"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"/>
+                    
+                <Label
+                    FontFamily="pixel _font"
+                    Content="Shattered Pixel Dungeon CUSTOM!"
+                    Foreground="Wheat"
+                    Margin="0,-1,0,0"
+                    FontSize="14"/>
+
+                <Button Style="{StaticResource CloseAppButton}"
+                        Width="15"
+                        Height="15"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment ="Top"
+                        Margin="250,4.4,0,0"
+                        Click="Button_Click"/>
+                </StackPanel>
+
+            </Border>
+            <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <StackPanel>
+                <Label Content="Strength"/>
+                <TextBox Width="150" Height="40" Style="{StaticResource HPTextBox}" Text="{Binding Hero.Strength, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Health Points"/>
+                <TextBox Width="150" Height="40" Style="{StaticResource HPTextBox}" Text="{Binding Hero.HealthPoints, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Max Health Points" />
+                <TextBox Width="150" Height="40" Style="{StaticResource HPTextBox}" Text="{Binding Hero.MaxHealthPoints, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Attack Skill"/>
+                <TextBox Width="150" Height="40" Style="{StaticResource HPTextBox}" Text="{Binding Hero.AttackSkill, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+        </StackPanel>
+            <StackPanel HorizontalAlignment="Left" Grid.Column="1"  Grid.Row="2" Orientation="Horizontal">
+                <Button Style="{StaticResource DataButton}"
+                        Margin="0,0,0,0" Width="75" Height="25" 
+                        Command="{Binding LoadCommand}"
+                        Content="Load"
+                        Foreground="White">
+                </Button>
+                <Button Style="{StaticResource DataButton}"
+                        Margin="5,0,0,0" Width="75" Height="25" 
+                        Command="{Binding SaveCommand}"
+                        Content="Save"
+                        Foreground="White">
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

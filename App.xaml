@@ -1,0 +1,15 @@
+﻿<Application x:Class="Shattered_pixel_dungeon_CUSTOM.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Shattered_pixel_dungeon_CUSTOM"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source=".\Styles\HPTextBox.xaml"/>
+                <ResourceDictionary Source=".\Styles\DataButton.xaml"/>
+                <ResourceDictionary Source=".\Styles\ExitButton.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
